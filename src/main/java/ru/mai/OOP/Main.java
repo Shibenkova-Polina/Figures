@@ -1,3 +1,5 @@
+package ru.mai.OOP;
+
 import ru.mai.OOP.elements.Point;
 import ru.mai.OOP.figures.*;
 
