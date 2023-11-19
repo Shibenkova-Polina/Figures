@@ -1,3 +1,5 @@
+package ru.mai.OOP.elements;
+
 public class Point {
     public final int x;
     public final int y;

@@ -1,3 +1,6 @@
+import ru.mai.OOP.elements.Point;
+import ru.mai.OOP.figures.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;

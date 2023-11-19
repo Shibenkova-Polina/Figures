@@ -1,3 +1,5 @@
+package ru.mai.OOP.figures;
+
 public class Figure {
     public boolean rightFigure() {
         System.out.println("The figure is figure");

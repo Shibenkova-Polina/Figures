@@ -1,18 +1,21 @@
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
+package ru.mai.OOP.figures;
 
-public class Square extends Figure {
+import ru.mai.OOP.elements.Point;
+
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
+
+public class Rectangle extends Figure {
 
     private static final int INDEX_THREE = 3;
-    private static final int SIDES_OF_THE_SQUARE = 4;
 
     private final Point[] points;
 
-    public Square() {
+    public Rectangle() {
         this.points = new Point[0];
     }
 
-    public Square(Point[] coordinate) {
+    public Rectangle(Point[] coordinate) {
         this.points = coordinate;
     }
 
@@ -42,18 +45,16 @@ public class Square extends Figure {
         }
 
         if (check) {
-            double firstSide = sqrt(pow((x0 - points[1].x), 2) + pow((y0 - points[1].y), 2) + pow((z0 - points[1].z), 2));
-            double secondSide = sqrt(pow((x0 - points[INDEX_THREE].x), 2) + pow((y0 - points[INDEX_THREE].y), 2) + pow((z0 - points[INDEX_THREE].z),
-                    2));
-            double hypotenuse = sqrt(pow((x0 - points[2].x), 2) + pow((y0 - points[2].y), 2) + pow((z0 - points[2].z), 2));
+            double firstDiagonal = sqrt(pow((x0 - points[2].x), 2) + pow((y0 - points[2].y), 2) + pow((z0 - points[2].z), 2));
+            double secondDiagonal = sqrt(pow((points[1].x - points[INDEX_THREE].x), 2) + pow((points[1].y - points[INDEX_THREE].y), 2) + pow((points[1].z - points[INDEX_THREE].z), 2));
 
-            if (firstSide == secondSide && hypotenuse == firstSide * sqrt(2)) {
+            if (firstDiagonal == secondDiagonal) {
                 System.out.println("The figure is valid");
                 return true;
             } else {
                 System.out.println("The figure is invalid");
             }
-        } else {
+        }  else {
             System.out.println("The figure is invalid");
         }
 
@@ -62,16 +63,20 @@ public class Square extends Figure {
 
     @Override
     public void area() {
-        double side = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
-        double area = pow(side, 2);
+        double firstSide = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
+        double secondSide = sqrt(pow((points[0].x - points[INDEX_THREE].x), 2) + pow((points[0].y - points[INDEX_THREE].y), 2)
+                + pow((points[0].z - points[INDEX_THREE].z), 2));
+        double area = firstSide * secondSide;
         String result = String.format("%.2f", area).replace(',', '.');
         System.out.println("The figure area " + result);
     }
 
     @Override
     public void perimeter() {
-        double side = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
-        double perimeter = SIDES_OF_THE_SQUARE * side;
+        double firstSide = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
+        double secondSide = sqrt(pow((points[0].x - points[INDEX_THREE].x), 2) + pow((points[0].y - points[INDEX_THREE].y), 2)
+                + pow((points[0].z - points[INDEX_THREE].z),2));
+        double perimeter = 2 * (firstSide + secondSide);
         String result = String.format("%.2f", perimeter).replace(',', '.');
         System.out.println("The figure perimeter " + result);
     }
