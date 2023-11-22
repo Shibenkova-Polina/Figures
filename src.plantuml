@@ -1,0 +1,110 @@
+@startuml
+class Circle {
+  - points : Point[]
+  + rightFigure(): boolean
+  + perimeter(): void
+  + area(): void
+}
+class Cone {
+  - points : Point[]
+  + rightFigure(): boolean
+  + area(): void
+}
+class Cylinder {
+  - points : Point[]
+  + rightFigure(): boolean
+  + area(): void
+}
+class Figure {
+  + rightFigure(): boolean
+  + perimeter(): void
+  + area(): void
+}
+class Main {
+  + chooseFigure(Scanner): Figure
+  + inputCoordinate(Scanner, Figure): ArrayList<Point>
+  + validate(Figure, Point[]): boolean
+  + main(String[]): void
+  + createFigure(Figure, Point[]): Figure?
+}
+class Parallelogram {
+  - points : Point[]
+  + rightFigure(): boolean
+  + perimeter(): void
+  + area(): void
+}
+class Point {
+  + x : int
+  + y : int
+  + z : int
+}
+class Polygon {
+  - points : Point[]
+  + rightFigure(): boolean
+  + perimeter(): void
+  + area(): void
+}
+class Rectangle {
+  - points : Point[]
+  + rightFigure(): boolean
+  + perimeter(): void
+  + area(): void
+}
+class Sphere {
+  - points : Point[]
+  + rightFigure(): boolean
+  + area(): void
+}
+class Square {
+  - points : Point[]
+  + rightFigure(): boolean
+  + perimeter(): void
+  + area(): void
+}
+class Triangle {
+  - points : Point[]
+  + rightFigure(): boolean
+  + perimeter(): void
+  + area(): void
+}
+class TruncatedSphere {
+  - points : Point[]
+  + rightFigure(): boolean
+  + area(): void
+}
+
+Circle --|> Figure
+Cone --|> Figure
+Cylinder --|> Figure
+Parallelogram --|> Figure
+Polygon --|> Figure
+Rectangle --|> Figure
+Sphere --|> Figure
+Square --|> Figure
+Triangle --|> Figure
+TruncatedSphere --|> Figure
+
+Main ..> Cylinder
+Main ..> Cone
+Main ..> Circle
+Main ..> Parallelogram
+Main ..> Rectangle
+Main ..> Polygon
+Main ..> Sphere
+Main ..> Square
+Main ..> Triangle
+Main ..> TruncatedSphere
+Main ..> Figure
+Main ..> Point
+
+Point <--* Circle
+Point <--* Cone
+Point <--* Cylinder
+Point <--* Parallelogram
+Point <--* Polygon
+Point <--* Rectangle
+Point <--* Square
+Point <--* Sphere
+Point <--* TruncatedSphere
+Point <--* Triangle
+@enduml
