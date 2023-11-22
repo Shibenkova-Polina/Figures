@@ -1,6 +1,6 @@
-package ru.mai.OOP.figures;
+package ru.mai.oop.figures;
 
-import ru.mai.OOP.elements.Point;
+import ru.mai.oop.elements.Point;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;

@@ -1,4 +1,4 @@
-package ru.mai.OOP.elements;
+package ru.mai.oop.elements;
 
 public class Point {
     public final int x;

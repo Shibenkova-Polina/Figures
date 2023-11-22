@@ -1,4 +1,4 @@
-package ru.mai.OOP.figures;
+package ru.mai.oop.figures;
 
 public class Figure {
     public boolean rightFigure() {

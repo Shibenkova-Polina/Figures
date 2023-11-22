@@ -1,7 +1,7 @@
-package ru.mai.OOP;
+package ru.mai.oop;
 
-import ru.mai.OOP.elements.Point;
-import ru.mai.OOP.figures.*;
+import ru.mai.oop.elements.Point;
+import ru.mai.oop.figures.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
