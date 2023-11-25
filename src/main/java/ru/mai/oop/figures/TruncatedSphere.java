@@ -18,6 +18,7 @@ public class TruncatedSphere extends Figure {
         this.points = coordinate;
     }
 
+    @Override
     public boolean rightFigure() {
         double fDist = sqrt(pow(points[1].getX() - points[0].getX(), 2) + pow(points[1].getY() - points[0].getY(), 2)
                 + pow(points[1].getZ() - points[0].getZ(), 2));
@@ -34,10 +35,10 @@ public class TruncatedSphere extends Figure {
         return false;
     }
 
+    @Override
     public void area() {
         double radius = sqrt(pow(points[1].getX() - points[0].getX(), 2) + pow(points[1].getY() - points[0].getY(), 2)
                 + pow(points[1].getZ() - points[0].getZ(), 2));
-
         int xCircle = points[0].getX();
         int yCircle = points[0].getY();
 
