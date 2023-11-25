@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Sphere_Test {
     public Point[] coordinate = {
             new Point(1, 1, 1),
-            new Point(1, 2, 1)};
+            new Point(1, 2, 1)
+    };
     Sphere sphere = new Sphere(coordinate);
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -33,7 +34,7 @@ public class Sphere_Test {
 
     @Test
     @DisplayName("sphere area")
-    public void SphereArea() {
+    public void sphereArea() {
         sphere.area();
         Assertions Assert = null;
         Assert.assertEquals("The figure area 12.57", output.toString().trim());

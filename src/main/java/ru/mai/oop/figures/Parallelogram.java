@@ -24,20 +24,21 @@ public class Parallelogram extends Figure {
     public boolean rightFigure() {
         boolean check = true;
 
-        int x0 = points[0].x;
-        int y0 = points[0].y;
-        int z0 = points[0].z;
+        int x0 = points[0].getX();
+        int y0 = points[0].getY();
+        int z0 = points[0].getZ();
 
         cycle:
         for (int j = 0; j < points.length - 2; j++) {
-            int x = points[j].x;
-            int y = points[j].y;
-            int z = points[j].z;
+            int x = points[j].getX();
+            int y = points[j].getY();
+            int z = points[j].getZ();
 
             for (int i = j; i < points.length - 2; i++) {
-                int fCalculation = (points[i + 1].y - y) * (points[i + 2].z - z) - (points[i + 2].y - y) * (points[i + 1].z - z);
-                int sCalculation = -((points[i + 1].x - x) * (points[i + 2].z - z) - (points[i + 2].x - x) * (points[i + 1].z - z));
-                int tCalculation = (points[i + 1].x - x) * (points[i + 2].y - y) - (points[i + 2].x - x) * (points[i + 1].y - y);
+                int fCalculation = (points[i + 1].getY() - y) * (points[i + 2].getZ() - z) - (points[i + 2].getY() - y) * (points[i + 1].getZ() - z);
+                int sCalculation = -((points[i + 1].getX() - x) * (points[i + 2].getZ() - z)
+                        - (points[i + 2].getX() - x) * (points[i + 1].getZ() - z));
+                int tCalculation = (points[i + 1].getX() - x) * (points[i + 2].getY() - y) - (points[i + 2].getX() - x) * (points[i + 1].getY() - y);
                 if (fCalculation + sCalculation + tCalculation == 0) {
                     check = false;
                     break cycle;
@@ -46,12 +47,13 @@ public class Parallelogram extends Figure {
         }
 
         if (check) {
-            double firstSide = sqrt(pow((x0 - points[1].x), 2) + pow((y0 - points[1].y), 2) + pow((z0 - points[1].z), 2));
-            double secondSide = sqrt(pow((points[2].x - points[1].x), 2) + pow((points[2].y - points[1].y), 2) + pow((points[2].z - points[1].z), 2));
-            double thirdSide = sqrt(pow((points[2].x - points[INDEX_THREE].x), 2) + pow((points[2].y - points[INDEX_THREE].y), 2)
-                    + pow((points[2].z - points[INDEX_THREE].z), 2));
-            double forthSide = sqrt(pow((x0 - points[INDEX_THREE].x), 2) + pow((y0 - points[INDEX_THREE].y), 2) + pow((z0 - points[INDEX_THREE].z),
-                    2));
+            double firstSide = sqrt(pow((x0 - points[1].getX()), 2) + pow((y0 - points[1].getY()), 2) + pow((z0 - points[1].getZ()), 2));
+            double secondSide = sqrt(pow((points[2].getX() - points[1].getX()), 2) + pow((points[2].getY() - points[1].getY()), 2)
+                    + pow((points[2].getZ() - points[1].getZ()), 2));
+            double thirdSide = sqrt(pow((points[2].getX() - points[INDEX_THREE].getX()), 2) + pow((points[2].getY() - points[INDEX_THREE].getY()), 2)
+                    + pow((points[2].getZ() - points[INDEX_THREE].getZ()), 2));
+            double forthSide = sqrt(pow((x0 - points[INDEX_THREE].getX()), 2) + pow((y0 - points[INDEX_THREE].getY()), 2)
+                    + pow((z0 - points[INDEX_THREE].getZ()), 2));
 
             if (firstSide == thirdSide && secondSide == forthSide) {
                 System.out.println("The figure is valid");
@@ -68,12 +70,12 @@ public class Parallelogram extends Figure {
 
     @Override
     public void area() {
-        int firstX = points[0].x - points[1].x;
-        int firstY = points[0].y - points[1].y;
-        int firstZ = points[0].z - points[1].z;
-        int secondX = points[0].x - points[INDEX_THREE].x;
-        int secondY = points[0].y - points[INDEX_THREE].y;
-        int secondZ = points[0].z - points[INDEX_THREE].z;
+        int firstX = points[0].getX() - points[1].getX();
+        int firstY = points[0].getY() - points[1].getY();
+        int firstZ = points[0].getZ() - points[1].getZ();
+        int secondX = points[0].getX() - points[INDEX_THREE].getX();
+        int secondY = points[0].getY() - points[INDEX_THREE].getY();
+        int secondZ = points[0].getZ() - points[INDEX_THREE].getZ();
 
         int vectorX = firstY * secondZ - firstZ * secondY;
         int vectorY = firstZ * secondX - firstX * secondZ;
@@ -86,8 +88,10 @@ public class Parallelogram extends Figure {
 
     @Override
     public void perimeter() {
-        double firstSide = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
-        double secondSide = sqrt(pow((points[2].x - points[1].x), 2) + pow((points[2].y - points[1].y), 2) + pow((points[2].z - points[1].z), 2));
+        double firstSide = sqrt(pow((points[0].getX() - points[1].getX()), 2) + pow((points[0].getY() - points[1].getY()), 2)
+                + pow((points[0].getZ() - points[1].getZ()), 2));
+        double secondSide = sqrt(pow((points[2].getX() - points[1].getX()), 2) + pow((points[2].getY() - points[1].getY()), 2)
+                + pow((points[2].getZ() - points[1].getZ()), 2));
         double perimeter = 2 * (firstSide + secondSide);
         String result = String.format("%.2f", perimeter).replace(',', '.');
         System.out.println("The figure perimeter " + result);

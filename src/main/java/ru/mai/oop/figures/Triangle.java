@@ -19,13 +19,16 @@ public class Triangle extends Figure {
 
     @Override
     public boolean rightFigure() {
-        double firstLine = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
-        double secondLine = sqrt(pow((points[2].x - points[1].x), 2) + pow((points[2].y - points[1].y), 2) + pow((points[2].z - points[1].z), 2));
-        double thirdLine = sqrt(pow((points[0].x - points[2].x), 2) + pow((points[0].y - points[2].y), 2) + pow((points[0].z - points[2].z), 2));
+        double firstLine = sqrt(pow((points[0].getX() - points[1].getX()), 2) + pow((points[0].getY() - points[1].getY()), 2)
+                + pow((points[0].getZ() - points[1].getZ()), 2));
+        double secondLine = sqrt(pow((points[2].getX() - points[1].getX()), 2) + pow((points[2].getY() - points[1].getY()), 2)
+                + pow((points[2].getZ() - points[1].getZ()), 2));
+        double thirdLine = sqrt(pow((points[0].getX() - points[2].getX()), 2) + pow((points[0].getY() - points[2].getY()), 2)
+                + pow((points[0].getZ() - points[2].getZ()), 2));
 
-        if (points[0].x == points[1].x && points[0].y == points[1].y && points[0].z == points[1].z
-                || points[0].x == points[2].x && points[0].y == points[2].y && points[0].z == points[2].z
-                || points[2].x == points[1].x && points[2].y == points[1].y && points[2].z == points[1].z) {
+        if (points[0].getX() == points[1].getX() && points[0].getY() == points[1].getY() && points[0].getZ() == points[1].getZ()
+                || points[0].getX() == points[2].getX() && points[0].getY() == points[2].getY() && points[0].getZ() == points[2].getZ()
+                || points[2].getX() == points[1].getX() && points[2].getY() == points[1].getY() && points[2].getZ() == points[1].getZ()) {
             System.out.println("The figure is invalid");
         } else if (firstLine + secondLine > thirdLine && firstLine + thirdLine > secondLine && secondLine + thirdLine > firstLine) {
             System.out.println("The figure is valid");
@@ -39,9 +42,12 @@ public class Triangle extends Figure {
 
     @Override
     public void area() {
-        double firstLine = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
-        double secondLine = sqrt(pow((points[2].x - points[1].x), 2) + pow((points[2].y - points[1].y), 2) + pow((points[2].z - points[1].z), 2));
-        double thirdLine = sqrt(pow((points[0].x - points[2].x), 2) + pow((points[0].y - points[2].y), 2) + pow((points[0].z - points[2].z), 2));
+        double firstLine = sqrt(pow((points[0].getX() - points[1].getX()), 2) + pow((points[0].getY() - points[1].getY()), 2)
+                + pow((points[0].getZ() - points[1].getZ()), 2));
+        double secondLine = sqrt(pow((points[2].getX() - points[1].getX()), 2) + pow((points[2].getY() - points[1].getY()), 2)
+                + pow((points[2].getZ() - points[1].getZ()), 2));
+        double thirdLine = sqrt(pow((points[0].getX() - points[2].getX()), 2) + pow((points[0].getY() - points[2].getY()), 2)
+                + pow((points[0].getZ() - points[2].getZ()), 2));
         double halfPerimeter = (firstLine + secondLine + thirdLine) / 2;
         double area = sqrt(halfPerimeter * (halfPerimeter - firstLine) * (halfPerimeter - secondLine) * (halfPerimeter - thirdLine));
         String result = String.format("%.2f", area).replace(',', '.');
@@ -50,9 +56,12 @@ public class Triangle extends Figure {
 
     @Override
     public void perimeter() {
-        double firstLine = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
-        double secondLine = sqrt(pow((points[2].x - points[1].x), 2) + pow((points[2].y - points[1].y), 2) + pow((points[2].z - points[1].z), 2));
-        double thirdLine = sqrt(pow((points[0].x - points[2].x), 2) + pow((points[0].y - points[2].y), 2) + pow((points[0].z - points[2].z), 2));
+        double firstLine = sqrt(pow((points[0].getX() - points[1].getX()), 2) + pow((points[0].getY() - points[1].getY()), 2)
+                + pow((points[0].getZ() - points[1].getZ()), 2));
+        double secondLine = sqrt(pow((points[2].getX() - points[1].getX()), 2) + pow((points[2].getY() - points[1].getY()), 2)
+                + pow((points[2].getZ() - points[1].getZ()), 2));
+        double thirdLine = sqrt(pow((points[0].getX() - points[2].getX()), 2) + pow((points[0].getY() - points[2].getY()), 2)
+                + pow((points[0].getZ() - points[2].getZ()), 2));
         double perimeter = firstLine + secondLine + thirdLine;
         String result = String.format("%.2f", perimeter).replace(',', '.');
         System.out.println("The figure perimeter " + result);

@@ -20,14 +20,14 @@ public class Cone extends Figure {
 
     @Override
     public boolean rightFigure() {
-        int posHighX = points[2].x - points[0].x;
-        int posHighY = points[2].y - points[0].y;
-        int posHighZ = points[2].z - points[0].z;
+        int posHighX = points[2].getX() - points[0].getX();
+        int posHighY = points[2].getY() - points[0].getY();
+        int posHighZ = points[2].getZ() - points[0].getZ();
         double high = sqrt(pow(posHighX, 2) + pow(posHighY, 2) + pow(posHighZ, 2));
 
-        int radX = points[1].x - points[0].x;
-        int radY = points[1].y - points[0].y;
-        int radZ = points[1].z - points[0].z;
+        int radX = points[1].getX() - points[0].getX();
+        int radY = points[1].getY() - points[0].getY();
+        int radZ = points[1].getZ() - points[0].getZ();
         double radius = sqrt(pow(radX, 2) + pow(radY, 2) + pow(radZ, 2));
 
         double vectorMultipX = pow(posHighY * radZ - radY * posHighZ, 2);
@@ -47,10 +47,10 @@ public class Cone extends Figure {
 
     @Override
     public void area() {
-        double radius = sqrt(pow((points[1].x - points[0].x), 2) + pow((points[1].y - points[0].y), 2)
-                + pow((points[1].z - points[0].z), 2));
-        double high = sqrt(pow((points[2].x - points[0].x), 2) + pow((points[2].y - points[0].y), 2)
-                + pow((points[2].z - points[0].z), 2));
+        double radius = sqrt(pow((points[1].getX() - points[0].getX()), 2) + pow((points[1].getY() - points[0].getY()), 2)
+                + pow((points[1].getZ() - points[0].getZ()), 2));
+        double high = sqrt(pow((points[2].getX() - points[0].getX()), 2) + pow((points[2].getY() - points[0].getY()), 2)
+                + pow((points[2].getZ() - points[0].getZ()), 2));
         double area = PI * radius * (radius + sqrt(pow(high, 2) + pow(radius, 2)));
         String result = String.format("%.2f", area).replace(',', '.');
         System.out.println("The figure area " + result);

@@ -21,14 +21,14 @@ public class Cylinder extends Figure {
 
     @Override
     public boolean rightFigure() {
-        int firstPosRadX = points[2].x - points[0].x;
-        int firstPosRadY = points[2].y - points[0].y;
-        int firstPosRadZ = points[2].z - points[0].z;
+        int firstPosRadX = points[2].getX() - points[0].getX();
+        int firstPosRadY = points[2].getY() - points[0].getY();
+        int firstPosRadZ = points[2].getZ() - points[0].getZ();
         double firstPosRad = sqrt(pow(firstPosRadX, 2) + pow(firstPosRadY, 2) + pow(firstPosRadZ, 2));
 
-        int secondPosRadX = points[2].x - points[1].x;
-        int secondPosRadY = points[2].y - points[1].y;
-        int secondPosRadZ = points[2].z - points[1].z;
+        int secondPosRadX = points[2].getX() - points[1].getX();
+        int secondPosRadY = points[2].getY() - points[1].getY();
+        int secondPosRadZ = points[2].getZ() - points[1].getZ();
         double secondPosRad = sqrt(pow(secondPosRadX, 2) + pow(secondPosRadY, 2) + pow(secondPosRadZ, 2));
 
         int indexRad;
@@ -41,9 +41,9 @@ public class Cylinder extends Figure {
             indexRad = 2;
         }
 
-        int posHighX = points[1].x - points[0].x;
-        int posHighY = points[1].y - points[0].y;
-        int posHighZ = points[1].z - points[0].z;
+        int posHighX = points[1].getX() - points[0].getX();
+        int posHighY = points[1].getY() - points[0].getY();
+        int posHighZ = points[1].getZ() - points[0].getZ();
         double high = sqrt(pow(posHighX, 2) + pow(posHighY, 2) + pow(posHighZ, 2));
 
         double vectorMultiplyX;
@@ -75,7 +75,23 @@ public class Cylinder extends Figure {
 
     @Override
     public void area() {
-        double high = sqrt(pow(points[1].x - points[0].x, 2) + pow(points[1].y - points[0].y, 2) + pow(points[1].z - points[0].z, 2));
+        int firstPosRadX = points[2].getX() - points[0].getX();
+        int firstPosRadY = points[2].getY() - points[0].getY();
+        int firstPosRadZ = points[2].getZ() - points[0].getZ();
+        double firstPosRad = sqrt(pow(firstPosRadX, 2) + pow(firstPosRadY, 2) + pow(firstPosRadZ, 2));
+
+        int secondPosRadX = points[2].getX() - points[1].getX();
+        int secondPosRadY = points[2].getY() - points[1].getY();
+        int secondPosRadZ = points[2].getZ() - points[1].getZ();
+        double secondPosRad = sqrt(pow(secondPosRadX, 2) + pow(secondPosRadY, 2) + pow(secondPosRadZ, 2));
+
+        if (firstPosRad < secondPosRad) {
+            radius = firstPosRad;
+        } else {
+            radius = secondPosRad;
+        }
+        double high = sqrt(pow(points[1].getX() - points[0].getX(), 2) + pow(points[1].getY() - points[0].getY(), 2)
+                + pow(points[1].getZ() - points[0].getZ(), 2));
         double area = 2 * PI * radius * (radius + high);
         String result = String.format("%.2f", area).replace(',', '.');
         System.out.println("The figure area " + result);

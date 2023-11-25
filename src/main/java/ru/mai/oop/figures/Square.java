@@ -24,20 +24,21 @@ public class Square extends Figure {
     public boolean rightFigure() {
         boolean check = true;
 
-        int x0 = points[0].x;
-        int y0 = points[0].y;
-        int z0 = points[0].z;
+        int x0 = points[0].getX();
+        int y0 = points[0].getY();
+        int z0 = points[0].getZ();
 
         cycle:
         for (int j = 0; j < points.length - 2; j++) {
-            int x = points[j].x;
-            int y = points[j].y;
-            int z = points[j].z;
+            int x = points[j].getX();
+            int y = points[j].getY();
+            int z = points[j].getZ();
 
             for (int i = j; i < points.length - 2; i++) {
-                int fCalculation = (points[i + 1].y - y) * (points[i + 2].z - z) - (points[i + 2].y - y) * (points[i + 1].z - z);
-                int sCalculation = -((points[i + 1].x - x) * (points[i + 2].z - z) - (points[i + 2].x - x) * (points[i + 1].z - z));
-                int tCalculation = (points[i + 1].x - x) * (points[i + 2].y - y) - (points[i + 2].x - x) * (points[i + 1].y - y);
+                int fCalculation = (points[i + 1].getY() - y) * (points[i + 2].getZ() - z) - (points[i + 2].getY() - y) * (points[i + 1].getZ() - z);
+                int sCalculation = -((points[i + 1].getX() - x) * (points[i + 2].getZ() - z)
+                        - (points[i + 2].getX() - x) * (points[i + 1].getZ() - z));
+                int tCalculation = (points[i + 1].getX() - x) * (points[i + 2].getY() - y) - (points[i + 2].getX() - x) * (points[i + 1].getY() - y);
                 if (fCalculation + sCalculation + tCalculation == 0) {
                     check = false;
                     break cycle;
@@ -46,10 +47,10 @@ public class Square extends Figure {
         }
 
         if (check) {
-            double firstSide = sqrt(pow((x0 - points[1].x), 2) + pow((y0 - points[1].y), 2) + pow((z0 - points[1].z), 2));
-            double secondSide = sqrt(pow((x0 - points[INDEX_THREE].x), 2) + pow((y0 - points[INDEX_THREE].y), 2) + pow((z0 - points[INDEX_THREE].z),
-                    2));
-            double hypotenuse = sqrt(pow((x0 - points[2].x), 2) + pow((y0 - points[2].y), 2) + pow((z0 - points[2].z), 2));
+            double firstSide = sqrt(pow((x0 - points[1].getX()), 2) + pow((y0 - points[1].getY()), 2) + pow((z0 - points[1].getZ()), 2));
+            double secondSide = sqrt(pow((x0 - points[INDEX_THREE].getX()), 2) + pow((y0 - points[INDEX_THREE].getY()), 2)
+                    + pow((z0 - points[INDEX_THREE].getZ()), 2));
+            double hypotenuse = sqrt(pow((x0 - points[2].getX()), 2) + pow((y0 - points[2].getY()), 2) + pow((z0 - points[2].getZ()), 2));
 
             if (firstSide == secondSide && hypotenuse == firstSide * sqrt(2)) {
                 System.out.println("The figure is valid");
@@ -66,7 +67,8 @@ public class Square extends Figure {
 
     @Override
     public void area() {
-        double side = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
+        double side = sqrt(pow((points[0].getX() - points[1].getX()), 2) + pow((points[0].getY() - points[1].getY()), 2)
+                + pow((points[0].getZ() - points[1].getZ()), 2));
         double area = pow(side, 2);
         String result = String.format("%.2f", area).replace(',', '.');
         System.out.println("The figure area " + result);
@@ -74,7 +76,8 @@ public class Square extends Figure {
 
     @Override
     public void perimeter() {
-        double side = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
+        double side = sqrt(pow((points[0].getX() - points[1].getX()), 2) + pow((points[0].getY() - points[1].getY()), 2)
+                + pow((points[0].getZ() - points[1].getZ()), 2));
         double perimeter = SIDES_OF_THE_SQUARE * side;
         String result = String.format("%.2f", perimeter).replace(',', '.');
         System.out.println("The figure perimeter " + result);

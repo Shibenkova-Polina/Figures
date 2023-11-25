@@ -28,7 +28,8 @@ public class Sphere extends Figure {
 
     @Override
     public void area() {
-        double radius = sqrt(pow((points[0].x - points[1].x), 2) + pow((points[0].y - points[1].y), 2) + pow((points[0].z - points[1].z), 2));
+        double radius = sqrt(pow((points[0].getX() - points[1].getX()), 2) + pow((points[0].getY() - points[1].getY()), 2)
+                + pow((points[0].getZ() - points[1].getZ()), 2));
         double area = RATIO_FOR_AREA * PI * pow(radius, 2);
         String result = String.format("%.2f", area).replace(',', '.');
         System.out.println("The figure area " + result);
