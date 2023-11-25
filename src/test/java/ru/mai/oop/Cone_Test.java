@@ -11,30 +11,30 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Cone_Test {
-    public Point[] fCoordinate = {
+    private Point[] validCoordinates = {
             new Point(1, 1, 0),
             new Point(1, 0, 0),
             new Point(1, 1, 3)
     };
-    Cone fCone = new Cone(fCoordinate);
+    Cone validCone = new Cone(validCoordinates);
 
-    public Point[] sCoordinate = {
+    private Point[] invalidCoordinates = {
             new Point(1, 1, 0),
             new Point(1, 0, 0),
             new Point(1, 0, 3)
     };
-    Cone sCone = new Cone(sCoordinate);
+    Cone invalidCone = new Cone(invalidCoordinates);
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
     @Test
-    @DisplayName("right cone")
-    public void rightCone() {
-        boolean valid = fCone.rightFigure();
+    @DisplayName("check vaidity of cone")
+    public void checkVaidityOfCone() {
+        boolean valid = validCone.rightFigure();
         then(valid).isEqualTo(true);
 
-        valid = sCone.rightFigure();
+        valid = invalidCone.rightFigure();
         then(valid).isEqualTo(false);
     }
 
@@ -44,19 +44,17 @@ public class Cone_Test {
     }
 
     @Test
-    @DisplayName("cone area")
-    public void coneArea() {
-        fCone.area();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure area 13.08", output.toString().trim());
+    @DisplayName("check area of cone")
+    public void checkAreaOfCone() {
+        validCone.area();
+        assertEquals("The figure area 13.08", output.toString().trim());
     }
 
     @Test
-    @DisplayName("cone perimeter")
-    public void conePerimeter() {
-        fCone.perimeter();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure has no perimeter", output.toString().trim());
+    @DisplayName("check perimeter of cone")
+    public void checkPerimeterOfCone() {
+        validCone.perimeter();
+        assertEquals("The figure has no perimeter", output.toString().trim());
     }
 
     @AfterEach

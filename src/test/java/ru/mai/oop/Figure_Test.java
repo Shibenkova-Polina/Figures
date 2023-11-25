@@ -17,8 +17,8 @@ public class Figure_Test {
     private final PrintStream standardOut = System.out;
 
     @Test
-    @DisplayName("right figure")
-    public void rightFigure() {
+    @DisplayName("check vaidity of figure")
+    public void checkVaidityOfFigure() {
         boolean valid = figure.rightFigure();
         then(valid).isEqualTo(true);
     }
@@ -29,19 +29,17 @@ public class Figure_Test {
     }
 
     @Test
-    @DisplayName("figure area")
-    public void figureArea() {
+    @DisplayName("check area of figure")
+    public void checkAreaOfFigure() {
         figure.area();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure has no area", output.toString().trim());
+        assertEquals("The figure has no area", output.toString().trim());
     }
 
     @Test
-    @DisplayName("figure perimeter")
-    public void figurePerimeter() {
+    @DisplayName("check perimeter of figure")
+    public void checkPerimeterOfFigure() {
         figure.perimeter();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure has no perimeter", output.toString().trim());
+        assertEquals("The figure has no perimeter", output.toString().trim());
     }
 
     @AfterEach

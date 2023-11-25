@@ -11,30 +11,30 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TruncatedSphere_Test {
-    public Point[] fCoordinate = {
+    private Point[] validCoordinates = {
             new Point(0, 0, 0),
             new Point(5, 0, 0),
-            new Point(4, 0, 3),
+            new Point(4, 0, 3)
     };
-    TruncatedSphere fTruncatedSphere = new TruncatedSphere(fCoordinate);
+    TruncatedSphere validTruncatedSphere = new TruncatedSphere(validCoordinates);
 
-    public Point[] sCoordinate = {
+    private Point[] invalidCoordinates = {
             new Point(0, 0, 0),
             new Point(0, 0, 2),
-            new Point(0, 0, 1),
+            new Point(0, 0, 1)
     };
-    TruncatedSphere sTruncatedSphere = new TruncatedSphere(sCoordinate);
+    TruncatedSphere invalidTruncatedSphere = new TruncatedSphere(invalidCoordinates);
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
     @Test
-    @DisplayName("right truncatedSphere")
-    public void rightTruncatedSphere() {
-        boolean valid = fTruncatedSphere.rightFigure();
+    @DisplayName("check vaidity of truncatedSphere")
+    public void checkVaidityOfTruncatedSphere() {
+        boolean valid = validTruncatedSphere.rightFigure();
         then(valid).isEqualTo(true);
 
-        valid = sTruncatedSphere.rightFigure();
+        valid = invalidTruncatedSphere.rightFigure();
         then(valid).isEqualTo(false);
     }
 
@@ -44,19 +44,17 @@ public class TruncatedSphere_Test {
     }
 
     @Test
-    @DisplayName("parallelogram area")
-    public void truncatedSphereArea() {
-        fTruncatedSphere.area();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure area 113.10", output.toString().trim());
+    @DisplayName("check area of truncatedSphere")
+    public void checkAreaOfTruncatedSphere() {
+        validTruncatedSphere.area();
+        assertEquals("The figure area 113.10", output.toString().trim());
     }
 
     @Test
-    @DisplayName("parallelogram perimeter")
-    public void parallelogramPerimeter() {
-        fTruncatedSphere.perimeter();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure has no perimeter", output.toString().trim());
+    @DisplayName("check perimeter of truncatedSphere")
+    public void checkPerimeterOfTruncatedSphere() {
+        validTruncatedSphere.perimeter();
+        assertEquals("The figure has no perimeter", output.toString().trim());
     }
 
     @AfterEach

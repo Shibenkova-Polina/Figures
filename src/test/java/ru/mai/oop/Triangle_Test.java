@@ -11,30 +11,30 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Triangle_Test {
-    public Point[] fCoordinate = {
+    private Point[] validCoordinates = {
             new Point(-1, 0),
             new Point(3, 0),
             new Point(1, 4, 0)
     };
-    Triangle fTriangle = new Triangle(fCoordinate);
+    Triangle validTriangle = new Triangle(validCoordinates);
 
-    public Point[] sCoordinate = {
+    private Point[] invalidCoordinates = {
             new Point(1, 1),
             new Point(2, 2),
             new Point(3, 3)
     };
-    Triangle sTriangle = new Triangle(sCoordinate);
+    Triangle invalidTriangle = new Triangle(invalidCoordinates);
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
     @Test
-    @DisplayName("right triangle")
-    public void rightTriangle() {
-        boolean valid = fTriangle.rightFigure();
+    @DisplayName("check vaidity of triangle")
+    public void checkVaidityOfTriangle() {
+        boolean valid = validTriangle.rightFigure();
         then(valid).isEqualTo(true);
 
-        valid = sTriangle.rightFigure();
+        valid = invalidTriangle.rightFigure();
         then(valid).isEqualTo(false);
     }
 
@@ -44,19 +44,17 @@ public class Triangle_Test {
     }
 
     @Test
-    @DisplayName("triangle area")
-    public void triangleArea() {
-        fTriangle.area();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure area 8.00", output.toString().trim());
+    @DisplayName("check area of triangle")
+    public void checkAreaOfTriangle() {
+        validTriangle.area();
+        assertEquals("The figure area 8.00", output.toString().trim());
     }
 
     @Test
-    @DisplayName("triangle perimeter")
-    public void trianglePerimeter() {
-        fTriangle.perimeter();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure perimeter 12.94", output.toString().trim());
+    @DisplayName("check perimeter of triangle")
+    public void checkPerimeterOfTriangle() {
+        validTriangle.perimeter();
+        assertEquals("The figure perimeter 12.94", output.toString().trim());
     }
 
     @AfterEach

@@ -11,32 +11,32 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Rectangle_Test {
-    public Point[] fCoordinate = {
+    private Point[] validCoordinates = {
             new Point(1, 1),
             new Point(3, 1),
             new Point(3, 2, 0),
             new Point(1, 2)
     };
-    Rectangle fRectangle = new Rectangle(fCoordinate);
+    Rectangle validRectangle = new Rectangle(validCoordinates);
 
-    public Point[] sCoordinate = {
+    private Point[] invalidCoordinates = {
             new Point(1, 1),
             new Point(2, 1),
             new Point(2, 2),
             new Point(1, 3)
     };
-    Rectangle sRectangle = new Rectangle(sCoordinate);
+    Rectangle invalidRectangle = new Rectangle(invalidCoordinates);
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
     @Test
-    @DisplayName("right rectangle")
-    public void rightRectangle() {
-        boolean valid = fRectangle.rightFigure();
+    @DisplayName("check vaidity of rectangle")
+    public void checkVaidityOfRectangle() {
+        boolean valid = validRectangle.rightFigure();
         then(valid).isEqualTo(true);
 
-        valid = sRectangle.rightFigure();
+        valid = invalidRectangle.rightFigure();
         then(valid).isEqualTo(false);
     }
 
@@ -46,19 +46,17 @@ public class Rectangle_Test {
     }
 
     @Test
-    @DisplayName("rectangle area")
-    public void rectangleArea() {
-        fRectangle.area();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure area 2.00", output.toString().trim());
+    @DisplayName("check area of rectangle")
+    public void checkAreaOfRectangle() {
+        validRectangle.area();
+        assertEquals("The figure area 2.00", output.toString().trim());
     }
 
     @Test
-    @DisplayName("rectangle perimeter")
-    public void rectanglePerimeter() {
-        fRectangle.perimeter();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure perimeter 6.00", output.toString().trim());
+    @DisplayName("check perimeter of rectangle")
+    public void checkPerimeterOfRectangle() {
+        validRectangle.perimeter();
+        assertEquals("The figure perimeter 6.00", output.toString().trim());
     }
 
     @AfterEach

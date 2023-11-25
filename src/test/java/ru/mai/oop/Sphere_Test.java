@@ -11,18 +11,18 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Sphere_Test {
-    public Point[] coordinate = {
+    private Point[] coordinates = {
             new Point(1, 1, 1),
             new Point(1, 2, 1)
     };
-    Sphere sphere = new Sphere(coordinate);
+    Sphere sphere = new Sphere(coordinates);
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
     @Test
-    @DisplayName("right sphere")
-    public void rightSphere() {
+    @DisplayName("check vaidity of sphere")
+    public void checkVaidityOfSphere() {
         boolean valid = sphere.rightFigure();
         then(valid).isEqualTo(true);
     }
@@ -33,19 +33,17 @@ public class Sphere_Test {
     }
 
     @Test
-    @DisplayName("sphere area")
-    public void sphereArea() {
+    @DisplayName("check area of sphere")
+    public void checkAreaOfSphere() {
         sphere.area();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure area 12.57", output.toString().trim());
+        assertEquals("The figure area 12.57", output.toString().trim());
     }
 
     @Test
-    @DisplayName("sphere perimeter")
-    public void spherePerimeter() {
+    @DisplayName("check perimeter of sphere")
+    public void checkPerimeterOfSphere() {
         sphere.perimeter();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure has no perimeter", output.toString().trim());
+        assertEquals("The figure has no perimeter", output.toString().trim());
     }
 
     @AfterEach

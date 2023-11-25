@@ -11,32 +11,32 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Square_Test {
-    public Point[] fCoordinate = {
+    private Point[] validCoordinates = {
             new Point(1, 1),
             new Point(3, 1),
             new Point(3, 3, 0),
             new Point(1, 3)
     };
-    Square fSquare = new Square(fCoordinate);
+    Square validSquare = new Square(validCoordinates);
 
-    public Point[] sCoordinate = {
+    private Point[] invalidCoordinates = {
             new Point(1, 1),
             new Point(3, 1),
             new Point(3, 2),
             new Point(1, 2)
     };
-    Square sSquare = new Square(sCoordinate);
+    Square invalidSquare = new Square(invalidCoordinates);
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
     @Test
-    @DisplayName("right square")
-    public void rightSquare() {
-        boolean valid = fSquare.rightFigure();
+    @DisplayName("check vaidity of square")
+    public void checkVaidityOfSquare() {
+        boolean valid = validSquare.rightFigure();
         then(valid).isEqualTo(true);
 
-        valid = sSquare.rightFigure();
+        valid = invalidSquare.rightFigure();
         then(valid).isEqualTo(false);
     }
 
@@ -46,19 +46,17 @@ public class Square_Test {
     }
 
     @Test
-    @DisplayName("square area")
-    public void squareArea() {
-        fSquare.area();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure area 4.00", output.toString().trim());
+    @DisplayName("check area of square")
+    public void checkAreaOfSquare() {
+        validSquare.area();
+        assertEquals("The figure area 4.00", output.toString().trim());
     }
 
     @Test
-    @DisplayName("square perimeter")
-    public void squarePerimeter() {
-        fSquare.perimeter();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure perimeter 8.00", output.toString().trim());
+    @DisplayName("check perimeter of square")
+    public void checkPerimeterOfSquare() {
+        validSquare.perimeter();
+        assertEquals("The figure perimeter 8.00", output.toString().trim());
     }
 
     @AfterEach

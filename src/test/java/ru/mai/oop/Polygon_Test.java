@@ -11,30 +11,30 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Polygon_Test {
-    public Point[] fCoordinate = {
+    private Point[] validCoordinates = {
             new Point(-1, 0),
             new Point(3, 0),
             new Point(1, 4, 0)
     };
-    Polygon fPolygon = new Polygon(fCoordinate);
+    Polygon validPolygon = new Polygon(validCoordinates);
 
-    public Point[] sCoordinate = {
+    private Point[] invalidCoordinates = {
             new Point(1, 1),
             new Point(2, 2),
-            new Point(3, 3),
+            new Point(3, 3)
     };
-    Polygon sPolygon = new Polygon(sCoordinate);
+    Polygon invalidPolygon = new Polygon(invalidCoordinates);
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
     @Test
-    @DisplayName("right polygon")
-    public void rightParallelogram() {
-        boolean valid = fPolygon.rightFigure();
+    @DisplayName("check vaidity of polygon")
+    public void checkVaidityOfParallelogram() {
+        boolean valid = validPolygon.rightFigure();
         then(valid).isEqualTo(true);
 
-        valid = sPolygon.rightFigure();
+        valid = invalidPolygon.rightFigure();
         then(valid).isEqualTo(false);
     }
 
@@ -44,19 +44,17 @@ public class Polygon_Test {
     }
 
     @Test
-    @DisplayName("polygon area")
-    public void polygonArea() {
-        fPolygon.area();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure area 8.00", output.toString().trim());
+    @DisplayName("check area of polygon")
+    public void checkAreaOfPolygon() {
+        validPolygon.area();
+        assertEquals("The figure area 8.00", output.toString().trim());
     }
 
     @Test
-    @DisplayName("polygon perimeter")
-    public void polygonPerimeter() {
-        fPolygon.perimeter();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure perimeter 12.94", output.toString().trim());
+    @DisplayName("check perimeter of polygon")
+    public void checkPerimeterOfPolygon() {
+        validPolygon.perimeter();
+        assertEquals("The figure perimeter 12.94", output.toString().trim());
     }
 
     @AfterEach

@@ -11,18 +11,18 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Circle_Test {
-        public Point[] coordinate = {
+        private Point[] coordinates = {
                 new Point(1, 1),
                 new Point(2, 1)
         };
-        Circle circle = new Circle(coordinate);
+        Circle circle = new Circle(coordinates);
 
         private ByteArrayOutputStream output = new ByteArrayOutputStream();
         private final PrintStream standardOut = System.out;
 
         @Test
-        @DisplayName("right circle")
-        public void rightCircle() {
+        @DisplayName("check vaidity of circle")
+        public void checkVaidityOfCircle() {
             boolean valid = circle.rightFigure();
             then(valid).isEqualTo(true);
         }
@@ -33,19 +33,17 @@ public class Circle_Test {
         }
 
         @Test
-        @DisplayName("circle area")
-        public void circleArea() {
+        @DisplayName("check area of circle")
+        public void checkAreaOfCircle() {
             circle.area();
-            Assertions Assert = null;
-            Assert.assertEquals("The figure area 3.14", output.toString().trim());
+            assertEquals("The figure area 3.14", output.toString().trim());
         }
 
         @Test
-        @DisplayName("circle perimeter")
-        public void circlePerimeter() {
+        @DisplayName("check perimeter of circle")
+        public void checkPerimeterOfCircle() {
             circle.perimeter();
-            Assertions Assert = null;
-            Assert.assertEquals("The figure perimeter 6.28", output.toString().trim());
+            assertEquals("The figure perimeter 6.28", output.toString().trim());
         }
 
         @AfterEach

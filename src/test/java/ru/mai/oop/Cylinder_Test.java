@@ -11,30 +11,30 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Cylinder_Test {
-    public Point[] fCoordinate = {
+    private Point[] validCoordinates = {
             new Point(0, 0, 0),
             new Point(0, 0, 4),
             new Point(2, 0, 0)
     };
-    Cylinder fCylinder = new Cylinder(fCoordinate);
+    Cylinder validCylinder = new Cylinder(validCoordinates);
 
-    public Point[] sCoordinate = {
+    private Point[] invalidCoordinates = {
             new Point(0, 0, 0),
             new Point(0, 0, 4),
             new Point(1, 1, 3)
     };
-    Cylinder sCylinder = new Cylinder(sCoordinate);
+    Cylinder invalidCylinder = new Cylinder(invalidCoordinates);
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
     @Test
-    @DisplayName("right cylinder")
-    public void rightCylinder() {
-        boolean valid = fCylinder.rightFigure();
+    @DisplayName("check vaidity of cylinder")
+    public void checkVaidityOfCylinder() {
+        boolean valid = validCylinder.rightFigure();
         then(valid).isEqualTo(true);
 
-        valid = sCylinder.rightFigure();
+        valid = invalidCylinder.rightFigure();
         then(valid).isEqualTo(false);
     }
 
@@ -44,19 +44,17 @@ public class Cylinder_Test {
     }
 
     @Test
-    @DisplayName("cylinder area")
-    public void cylinderArea() {
-        fCylinder.area();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure area 75.40", output.toString().trim());
+    @DisplayName("check area of cylinder")
+    public void checkAreaOfCylinder() {
+        validCylinder.area();
+        assertEquals("The figure area 75.40", output.toString().trim());
     }
 
     @Test
-    @DisplayName("cylinder perimeter")
-    public void cylinderPerimeter() {
-        fCylinder.perimeter();
-        Assertions Assert = null;
-        Assert.assertEquals("The figure has no perimeter", output.toString().trim());
+    @DisplayName("check perimeter of cylinder")
+    public void checkPerimeterOfCylinder() {
+        validCylinder.perimeter();
+        assertEquals("The figure has no perimeter", output.toString().trim());
     }
 
     @AfterEach
