@@ -1,76 +1,81 @@
 @startuml
+skinparam classAttributeIconSize 0
+
 class Circle {
-  - points : Point[]
+  - points: Point[]
   + rightFigure(): boolean
-  + perimeter(): void
   + area(): void
+  + perimeter(): void
 }
 class Cone {
-  - points : Point[]
-  + rightFigure(): boolean
+  - points: Point[]
   + area(): void
+  + rightFigure(): boolean
 }
 class Cylinder {
-  - points : Point[]
+  - points: Point[]
   + rightFigure(): boolean
   + area(): void
 }
 class Figure {
+  + area(): void
   + rightFigure(): boolean
   + perimeter(): void
-  + area(): void
 }
 class Main {
   + chooseFigure(Scanner): Figure
   + inputCoordinate(Scanner, Figure): ArrayList<Point>
   + validate(Figure, Point[]): boolean
   + main(String[]): void
-  + createFigure(Figure, Point[]): Figure?
+  + createFigure(Figure, Point[]): Figure
 }
 class Parallelogram {
-  - points : Point[]
+  - points: Point[]
+  + area(): void
   + rightFigure(): boolean
   + perimeter(): void
-  + area(): void
 }
 class Point {
-  + x : int
-  + y : int
-  + z : int
+  - y: int
+  - z: int
+  - x: int
+  + getZ(): int
+  + getX(): int
+  + getY(): int
 }
 class Polygon {
-  - points : Point[]
+  - points: Point[]
   + rightFigure(): boolean
-  + perimeter(): void
   + area(): void
+  + perimeter(): void
 }
 class Rectangle {
-  - points : Point[]
-  + rightFigure(): boolean
+  - points: Point[]
   + perimeter(): void
   + area(): void
+  + rightFigure(): boolean
 }
 class Sphere {
-  - points : Point[]
+  - points: Point[]
   + rightFigure(): boolean
   + area(): void
 }
 class Square {
-  - points : Point[]
-  + rightFigure(): boolean
-  + perimeter(): void
+  - points: Point[]
   + area(): void
+  + perimeter(): void
+  + rightFigure(): boolean
 }
 class Triangle {
-  - points : Point[]
-  + rightFigure(): boolean
+  - points: Point[]
   + perimeter(): void
+  + rightFigure(): boolean
   + area(): void
 }
 class TruncatedSphere {
-  - points : Point[]
-  + rightFigure(): boolean
+  - points: Point[]
   + area(): void
+  + rightFigure(): boolean
 }
 
 Circle --|> Figure
@@ -97,14 +102,14 @@ Main ..> TruncatedSphere
 Main ..> Figure
 Main ..> Point
 
-Point <--* Circle
-Point <--* Cone
-Point <--* Cylinder
-Point <--* Parallelogram
-Point <--* Polygon
-Point <--* Rectangle
-Point <--* Square
-Point <--* Sphere
-Point <--* TruncatedSphere
-Point <--* Triangle
+Point --* Circle
+Point --* Cone
+Point --* Cylinder
+Point --* Parallelogram
+Point --* Polygon
+Point --* Rectangle
+Point --* Square
+Point --* Sphere
+Point --* TruncatedSphere
+Point --* Triangle
 @enduml
