@@ -11,19 +11,24 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Square_Test {
+    private static final int COORDINATE_ZERO = 0;
+    private static final int COORDINATE_ONE = 1;
+    private static final int COORDINATE_TWO = 2;
+    private static final int COORDINATE_THREE = 3;
+
     private Point[] validCoordinates = {
-            new Point(1, 1),
-            new Point(3, 1),
-            new Point(3, 3, 0),
-            new Point(1, 3)
+            new Point(COORDINATE_ONE, COORDINATE_ONE),
+            new Point(COORDINATE_THREE, COORDINATE_ONE),
+            new Point(COORDINATE_THREE, COORDINATE_THREE, COORDINATE_ZERO),
+            new Point(COORDINATE_ONE, COORDINATE_THREE)
     };
     Square validSquare = new Square(validCoordinates);
 
     private Point[] invalidCoordinates = {
-            new Point(1, 1),
-            new Point(3, 1),
-            new Point(3, 2),
-            new Point(1, 2)
+            new Point(COORDINATE_ONE, COORDINATE_ONE),
+            new Point(COORDINATE_THREE, COORDINATE_ONE),
+            new Point(COORDINATE_THREE, COORDINATE_TWO),
+            new Point(COORDINATE_ONE, COORDINATE_TWO)
     };
     Square invalidSquare = new Square(invalidCoordinates);
 

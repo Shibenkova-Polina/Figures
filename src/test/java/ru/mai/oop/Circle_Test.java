@@ -11,43 +11,46 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Circle_Test {
-        private Point[] coordinates = {
-                new Point(1, 1),
-                new Point(2, 1)
-        };
-        Circle circle = new Circle(coordinates);
+    private static final int COORDINATE_ONE = 1;
+    private static final int COORDINATE_TWO = 2;
 
-        private ByteArrayOutputStream output = new ByteArrayOutputStream();
-        private final PrintStream standardOut = System.out;
+    private Point[] coordinates = {
+            new Point(COORDINATE_ONE, COORDINATE_ONE),
+            new Point(COORDINATE_TWO, COORDINATE_ONE)
+    };
+    Circle circle = new Circle(coordinates);
 
-        @Test
-        @DisplayName("check vaidity of circle")
-        public void checkVaidityOfCircle() {
-            boolean valid = circle.rightFigure();
-            then(valid).isEqualTo(true);
-        }
+    private ByteArrayOutputStream output = new ByteArrayOutputStream();
+    private final PrintStream standardOut = System.out;
 
-        @BeforeEach
-        public void setUp() {
+    @Test
+    @DisplayName("check vaidity of circle")
+    public void checkVaidityOfCircle() {
+        boolean valid = circle.rightFigure();
+        then(valid).isEqualTo(true);
+    }
+
+    @BeforeEach
+    public void setUp() {
             System.setOut(new PrintStream(output));
         }
 
-        @Test
-        @DisplayName("check area of circle")
-        public void checkAreaOfCircle() {
-            circle.area();
-            assertEquals("The figure area 3.14", output.toString().trim());
-        }
+    @Test
+    @DisplayName("check area of circle")
+    public void checkAreaOfCircle() {
+        circle.area();
+        assertEquals("The figure area 3.14", output.toString().trim());
+    }
 
-        @Test
-        @DisplayName("check perimeter of circle")
-        public void checkPerimeterOfCircle() {
-            circle.perimeter();
-            assertEquals("The figure perimeter 6.28", output.toString().trim());
-        }
+    @Test
+    @DisplayName("check perimeter of circle")
+    public void checkPerimeterOfCircle() {
+        circle.perimeter();
+        assertEquals("The figure perimeter 6.28", output.toString().trim());
+    }
 
-        @AfterEach
-        public void tearDown() {
+    @AfterEach
+    public void tearDown() {
             System.setOut(standardOut);
         }
 }

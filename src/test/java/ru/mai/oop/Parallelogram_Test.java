@@ -11,19 +11,27 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Parallelogram_Test {
+    private static final int COORDINATE_ZERO = 0;
+    private static final int COORDINATE_ONE = 1;
+    private static final int COORDINATE_TWO = 2;
+    private static final int COORDINATE_THREE = 3;
+    private static final int COORDINATE_FIVE = 5;
+    private static final int COORDINATE_SIX = 6;
+    private static final int COORDINATE_SEVEN = 7;
+
     private Point[] validCoordinates = {
-            new Point(1, 1),
-            new Point(5, 1),
-            new Point(6, 3, 0),
-            new Point(2, 3)
+            new Point(COORDINATE_ONE, COORDINATE_ONE),
+            new Point(COORDINATE_FIVE, COORDINATE_ONE),
+            new Point(COORDINATE_SIX, COORDINATE_THREE, COORDINATE_ZERO),
+            new Point(COORDINATE_TWO, COORDINATE_THREE)
     };
     Parallelogram validParallelogram = new Parallelogram(validCoordinates);
 
     private Point[] invalidCoordinates = {
-            new Point(5, 1),
-            new Point(7, 3),
-            new Point(2, 3),
-            new Point(1, 1)
+            new Point(COORDINATE_FIVE, COORDINATE_ONE),
+            new Point(COORDINATE_SEVEN, COORDINATE_THREE),
+            new Point(COORDINATE_TWO, COORDINATE_THREE),
+            new Point(COORDINATE_ONE, COORDINATE_ONE)
     };
     Parallelogram invalidParallelogram = new Parallelogram(invalidCoordinates);
 

@@ -11,9 +11,12 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Sphere_Test {
+    private static final int COORDINATE_ONE = 1;
+    private static final int COORDINATE_TWO = 2;
+
     private Point[] coordinates = {
-            new Point(1, 1, 1),
-            new Point(1, 2, 1)
+            new Point(COORDINATE_ONE, COORDINATE_ONE, COORDINATE_ONE),
+            new Point(COORDINATE_ONE, COORDINATE_TWO, COORDINATE_ONE)
     };
     Sphere sphere = new Sphere(coordinates);
 

@@ -11,17 +11,21 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Cone_Test {
+    private static final int COORDINATE_ZERO = 0;
+    private static final int COORDINATE_ONE = 1;
+    private static final int COORDINATE_THREE = 3;
+
     private Point[] validCoordinates = {
-            new Point(1, 1, 0),
-            new Point(1, 0, 0),
-            new Point(1, 1, 3)
+            new Point(COORDINATE_ONE, COORDINATE_ONE, COORDINATE_ZERO),
+            new Point(COORDINATE_ONE, COORDINATE_ZERO, COORDINATE_ZERO),
+            new Point(COORDINATE_ONE, COORDINATE_ONE, COORDINATE_THREE)
     };
     Cone validCone = new Cone(validCoordinates);
 
     private Point[] invalidCoordinates = {
-            new Point(1, 1, 0),
-            new Point(1, 0, 0),
-            new Point(1, 0, 3)
+            new Point(COORDINATE_ONE, COORDINATE_ONE, COORDINATE_ZERO),
+            new Point(COORDINATE_ONE, COORDINATE_ZERO, COORDINATE_ZERO),
+            new Point(COORDINATE_ONE, COORDINATE_ZERO, COORDINATE_THREE)
     };
     Cone invalidCone = new Cone(invalidCoordinates);
 
