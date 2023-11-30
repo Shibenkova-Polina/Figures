@@ -42,6 +42,7 @@ public class Cone extends Figure {
         } else {
             System.out.println("The figure is invalid");
         }
+
         return false;
     }
 
