@@ -2,6 +2,7 @@ package ru.mai.oop;
 
 import ru.mai.oop.elements.Point;
 import ru.mai.oop.figures.*;
+import static ru.mai.oop.elements.Constants.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,9 +10,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    private static final int THREE_COORDINATES = 3;
-    private static final int FOUR_COORDINATES = 4;
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -52,7 +50,7 @@ public class Main {
         if (figure != null) {
             checkPoints = true;
 
-            if (figure instanceof Circle && points.length != 2) {
+            if (figure instanceof Circle && points.length != TWO_COORDINATES) {
                 checkPoints = false;
             } else if (figure instanceof Cone && points.length != THREE_COORDINATES) {
                 checkPoints = false;
@@ -64,9 +62,9 @@ public class Main {
                 checkPoints = false;
             } else if (figure instanceof Square && points.length != FOUR_COORDINATES) {
                 checkPoints = false;
-            } else if (figure instanceof Sphere && points.length != 2) {
+            } else if (figure instanceof Sphere && points.length != TWO_COORDINATES) {
                 checkPoints = false;
-            } else if (figure instanceof Polygon && points.length < 3) {
+            } else if (figure instanceof Polygon && points.length < THREE_COORDINATES) {
                 checkPoints = false;
             } else if (figure instanceof Triangle && points.length != THREE_COORDINATES) {
                 checkPoints = false;
@@ -169,7 +167,7 @@ public class Main {
                     for (int i = 0; i < nums.length; i++) {
                         points[i] = Integer.parseInt(nums[i]);
                     }
-                    Point point = new Point(points[0], points[1]);
+                    Point point = new Point(points[INDEX_ZERO], points[INDEX_ONE]);
                     coordinates.add(point);
                 }
             } else if (sMatcher.matches()) {
@@ -179,7 +177,7 @@ public class Main {
                 for (int i = 0; i < nums.length; i++) {
                     points[i] = Integer.parseInt(nums[i]);
                 }
-                Point point = new Point(points[0], points[1], points[2]);
+                Point point = new Point(points[INDEX_ZERO], points[INDEX_ONE], points[INDEX_TWO]);
                 coordinates.add(point);
             } else if (line.equals("STOP_INPUT")) {
                 return coordinates;

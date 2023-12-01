@@ -3,6 +3,8 @@ package ru.mai.oop;
 import org.junit.jupiter.api.*;
 import ru.mai.oop.elements.Point;
 import ru.mai.oop.figures.Sphere;
+import static ru.mai.oop.elements.Constants.*;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -11,9 +13,6 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Sphere_Test {
-    private static final int COORDINATE_ONE = 1;
-    private static final int COORDINATE_TWO = 2;
-
     private Point[] coordinates = {
             new Point(COORDINATE_ONE, COORDINATE_ONE, COORDINATE_ONE),
             new Point(COORDINATE_ONE, COORDINATE_TWO, COORDINATE_ONE)

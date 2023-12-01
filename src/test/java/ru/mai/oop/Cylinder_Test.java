@@ -3,6 +3,7 @@ package ru.mai.oop;
 import org.junit.jupiter.api.*;
 import ru.mai.oop.elements.Point;
 import ru.mai.oop.figures.Cylinder;
+import static ru.mai.oop.elements.Constants.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -11,12 +12,6 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Cylinder_Test {
-    private static final int COORDINATE_ZERO = 0;
-    private static final int COORDINATE_ONE = 1;
-    private static final int COORDINATE_TWO = 2;
-    private static final int COORDINATE_THREE = 3;
-    private static final int COORDINATE_FOUR = 4;
-
     private Point[] validCoordinates = {
             new Point(COORDINATE_ZERO, COORDINATE_ZERO, COORDINATE_ZERO),
             new Point(COORDINATE_ZERO, COORDINATE_ZERO, COORDINATE_FOUR),

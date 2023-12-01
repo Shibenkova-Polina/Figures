@@ -4,15 +4,13 @@ import ru.mai.oop.elements.Point;
 
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
+import static ru.mai.oop.elements.Constants.*;
 
 public class Rectangle extends Figure {
-
-    private static final int INDEX_THREE = 3;
-
     private final Point[] points;
 
     public Rectangle() {
-        this.points = new Point[0];
+        this.points = new Point[INDEX_ZERO];
     }
 
     public Rectangle(Point[] coordinate) {
@@ -23,21 +21,19 @@ public class Rectangle extends Figure {
     public boolean rightFigure() {
         boolean check = true;
 
-        int x0 = points[0].getX();
-        int y0 = points[0].getY();
-        int z0 = points[0].getZ();
-
         cycle:
-        for (int j = 0; j < points.length - 2; j++) {
+        for (int j = 0; j < points.length - NUMBER_TWO; j++) {
             int x = points[j].getX();
             int y = points[j].getY();
             int z = points[j].getZ();
 
-            for (int i = j; i < points.length - 2; i++) {
-                int fCalculation = (points[i + 1].getY() - y) * (points[i + 2].getZ() - z) - (points[i + 2].getY() - y) * (points[i + 1].getZ() - z);
-                int sCalculation = -((points[i + 1].getX() - x) * (points[i + 2].getZ() - z)
-                        - (points[i + 2].getX() - x) * (points[i + 1].getZ() - z));
-                int tCalculation = (points[i + 1].getX() - x) * (points[i + 2].getY() - y) - (points[i + 2].getX() - x) * (points[i + 1].getX() - y);
+            for (int i = j; i < points.length - NUMBER_TWO; i++) {
+                int fCalculation = (points[i + NUMBER_ONE].getY() - y) * (points[i + NUMBER_TWO].getZ() - z)
+                        - (points[i + NUMBER_TWO].getY() - y) * (points[i + NUMBER_ONE].getZ() - z);
+                int sCalculation = -((points[i + NUMBER_ONE].getX() - x) * (points[i + NUMBER_TWO].getZ() - z)
+                        - (points[i + NUMBER_TWO].getX() - x) * (points[i + NUMBER_ONE].getZ() - z));
+                int tCalculation = (points[i + NUMBER_ONE].getX() - x) * (points[i + NUMBER_TWO].getY() - y)
+                        - (points[i + NUMBER_TWO].getX() - x) * (points[i + NUMBER_ONE].getX() - y);
                 if (fCalculation + sCalculation + tCalculation == 0) {
                     check = false;
                     break cycle;
@@ -46,9 +42,12 @@ public class Rectangle extends Figure {
         }
 
         if (check) {
-            double firstDiagonal = sqrt(pow((x0 - points[2].getX()), 2) + pow((y0 - points[2].getY()), 2) + pow((z0 - points[2].getZ()), 2));
-            double secondDiagonal = sqrt(pow((points[1].getX() - points[INDEX_THREE].getX()), 2)
-                    + pow((points[1].getY() - points[INDEX_THREE].getY()), 2) + pow((points[1].getZ() - points[INDEX_THREE].getZ()), 2));
+            double firstDiagonal = sqrt(pow((points[INDEX_ZERO].getX() - points[INDEX_TWO].getX()), SECOND_POWER)
+                    + pow((points[INDEX_ZERO].getY() - points[INDEX_TWO].getY()), SECOND_POWER)
+                    + pow((points[INDEX_ZERO].getZ() - points[INDEX_TWO].getZ()), SECOND_POWER));
+            double secondDiagonal = sqrt(pow((points[INDEX_ONE].getX() - points[INDEX_THREE].getX()), SECOND_POWER)
+                    + pow((points[INDEX_ONE].getY() - points[INDEX_THREE].getY()), SECOND_POWER)
+                    + pow((points[INDEX_ONE].getZ() - points[INDEX_THREE].getZ()), SECOND_POWER));
 
             if (firstDiagonal == secondDiagonal) {
                 System.out.println("The figure is valid");
@@ -65,10 +64,12 @@ public class Rectangle extends Figure {
 
     @Override
     public void area() {
-        double firstSide = sqrt(pow((points[0].getX() - points[1].getX()), 2) + pow((points[0].getY() - points[1].getY()), 2)
-                + pow((points[0].getZ() - points[1].getZ()), 2));
-        double secondSide = sqrt(pow((points[0].getX() - points[INDEX_THREE].getX()), 2) + pow((points[0].getY() - points[INDEX_THREE].getY()), 2)
-                + pow((points[0].getZ() - points[INDEX_THREE].getZ()), 2));
+        double firstSide = sqrt(pow((points[INDEX_ZERO].getX() - points[INDEX_ONE].getX()), SECOND_POWER)
+                + pow((points[INDEX_ZERO].getY() - points[INDEX_ONE].getY()), SECOND_POWER)
+                + pow((points[INDEX_ZERO].getZ() - points[INDEX_ONE].getZ()), SECOND_POWER));
+        double secondSide = sqrt(pow((points[INDEX_ZERO].getX() - points[INDEX_THREE].getX()), SECOND_POWER)
+                + pow((points[INDEX_ZERO].getY() - points[INDEX_THREE].getY()), SECOND_POWER)
+                + pow((points[INDEX_ZERO].getZ() - points[INDEX_THREE].getZ()), SECOND_POWER));
         double area = firstSide * secondSide;
         String result = String.format("%.2f", area).replace(',', '.');
         System.out.println("The figure area " + result);
@@ -76,11 +77,13 @@ public class Rectangle extends Figure {
 
     @Override
     public void perimeter() {
-        double firstSide = sqrt(pow((points[0].getX() - points[1].getX()), 2) + pow((points[0].getY() - points[1].getY()), 2)
-                + pow((points[0].getZ() - points[1].getZ()), 2));
-        double secondSide = sqrt(pow((points[0].getX() - points[INDEX_THREE].getX()), 2) + pow((points[0].getY() - points[INDEX_THREE].getY()), 2)
-                + pow((points[0].getZ() - points[INDEX_THREE].getZ()),2));
-        double perimeter = 2 * (firstSide + secondSide);
+        double firstSide = sqrt(pow((points[INDEX_ZERO].getX() - points[INDEX_ONE].getX()), SECOND_POWER)
+                + pow((points[INDEX_ZERO].getY() - points[INDEX_ONE].getY()), SECOND_POWER)
+                + pow((points[INDEX_ZERO].getZ() - points[INDEX_ONE].getZ()), SECOND_POWER));
+        double secondSide = sqrt(pow((points[INDEX_ZERO].getX() - points[INDEX_THREE].getX()), SECOND_POWER)
+                + pow((points[INDEX_ZERO].getY() - points[INDEX_THREE].getY()), SECOND_POWER)
+                + pow((points[INDEX_ZERO].getZ() - points[INDEX_THREE].getZ()), SECOND_POWER));
+        double perimeter = NUMBER_TWO * (firstSide + secondSide);
         String result = String.format("%.2f", perimeter).replace(',', '.');
         System.out.println("The figure perimeter " + result);
     }

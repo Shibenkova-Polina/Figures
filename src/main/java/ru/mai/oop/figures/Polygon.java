@@ -4,13 +4,13 @@ import ru.mai.oop.elements.Point;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
+import static ru.mai.oop.elements.Constants.*;
 
 public class Polygon extends Figure {
-
     private final Point[] points;
 
     public Polygon() {
-        this.points = new Point[0];
+        this.points = new Point[INDEX_ZERO];
     }
 
     public Polygon(Point[] coordinate) {
@@ -21,23 +21,25 @@ public class Polygon extends Figure {
     public boolean rightFigure() {
         boolean check = true;
 
-        for (int j = 0; j < points.length - 2; j++) {
-            int x1 = points[j].getX();
-            int y1 = points[j].getY();
-            int z1 = points[j].getZ();
-            cycle:
-            for (int i = j + 1; i < points.length - 1; i++) {
-                int x2 = points[i].getX();
-                int y2 = points[i].getY();
-                int z2 = points[i].getZ();
-                for (int k = i + 1; k < points.length; k++) {
-                    int x3 = points[k].getX();
-                    int y3 = points[k].getY();
-                    int z3 = points[k].getZ();
+        for (int j = 0; j < points.length - NUMBER_TWO; j++) {
+            int xFirst = points[j].getX();
+            int yFirst = points[j].getY();
+            int zFirst = points[j].getZ();
 
-                    int fCalculation = (y2 - y1) * (z3 - z2) - (z2 - z1) * (y3 - y2);
-                    int sCalculation = -((x2 - x1) * (z3 - z2) - (z2 - z1) * (x3 - x2));
-                    int tCalculation = (x2 - x1) * (y3 - y2) - (y2 - y1) * (x3 - x2);
+            cycle:
+            for (int i = j + NUMBER_ONE; i < points.length - NUMBER_ONE; i++) {
+                int xSecond = points[i].getX();
+                int ySecond = points[i].getY();
+                int zSecond = points[i].getZ();
+
+                for (int k = i + NUMBER_ONE; k < points.length; k++) {
+                    int xThird = points[k].getX();
+                    int yThird = points[k].getY();
+                    int zThird = points[k].getZ();
+
+                    int fCalculation = (ySecond - yFirst) * (zThird - zSecond) - (zSecond - zFirst) * (yThird - ySecond);
+                    int sCalculation = -((xSecond - xFirst) * (zThird - zSecond) - (zSecond - zFirst) * (xThird - xSecond));
+                    int tCalculation = (xSecond - xFirst) * (yThird - ySecond) - (ySecond - yFirst) * (xThird - xSecond);
                     if (fCalculation + sCalculation + tCalculation == 0) {
                         check = false;
                         break cycle;
@@ -59,19 +61,19 @@ public class Polygon extends Figure {
     @Override
     public void area() {
         double summa = 0;
-        int amountPoints = points.length - 1;
-        double zeroX = points[0].getX();
-        double zeroY = points[0].getY();
-        double zeroZ = points[0].getZ();
+        int amountPoints = points.length - NUMBER_ONE;
+        double zeroX = points[INDEX_ZERO].getX();
+        double zeroY = points[INDEX_ZERO].getY();
+        double zeroZ = points[INDEX_ZERO].getZ();
 
-        for (int i = 1; i < amountPoints; ++i) {
+        for (int i = NUMBER_ONE; i < amountPoints; ++i) {
             double fVectorX = points[i].getX() - zeroX;
             double fVectorY = points[i].getY() - zeroY;
             double fVectorZ = points[i].getZ() - zeroZ;
 
-            double sVectorX = points[i + 1].getX() - zeroX;
-            double sVectorY = points[i + 1].getY() - zeroY;
-            double sVectorZ = points[i + 1].getZ() - zeroZ;
+            double sVectorX = points[i + NUMBER_ONE].getX() - zeroX;
+            double sVectorY = points[i + NUMBER_ONE].getY() - zeroY;
+            double sVectorZ = points[i + NUMBER_ONE].getZ() - zeroZ;
 
             double fCalc = fVectorY * sVectorZ - fVectorZ * sVectorY;
             double sCalc = fVectorX * sVectorZ - fVectorZ * sVectorZ;
@@ -79,7 +81,7 @@ public class Polygon extends Figure {
             summa += fCalc - sCalc + tCalc;
         }
 
-        double area = Math.abs(summa) / 2;
+        double area = Math.abs(summa) / NUMBER_TWO;
         String result = String.format("%.2f", area).replace(',', '.');
         System.out.println("The figure area " + result);
     }
@@ -87,15 +89,17 @@ public class Polygon extends Figure {
     @Override
     public void perimeter() {
         double len = 0;
-        int pointsSize = points.length - 1;
+        int pointsSize = points.length - NUMBER_ONE;
 
         for (int i = 0; i < pointsSize; i++) {
-            len += sqrt(pow(points[i].getX() - points[i + 1].getX(), 2) + pow(points[i].getY() - points[i + 1].getY(), 2)
-                    + pow(points[i].getZ() - points[i + 1].getZ(), 2));
+            len += sqrt(pow(points[i].getX() - points[i + NUMBER_ONE].getX(), SECOND_POWER)
+                    + pow(points[i].getY() - points[i + NUMBER_ONE].getY(), SECOND_POWER)
+                    + pow(points[i].getZ() - points[i + NUMBER_ONE].getZ(), SECOND_POWER));
         }
 
-        len += sqrt(pow(points[0].getX() - points[pointsSize].getX(), 2) + pow(points[0].getY() - points[pointsSize].getY(), 2)
-                + pow(points[0].getZ() - points[pointsSize].getZ(), 2));
+        len += sqrt(pow(points[INDEX_ZERO].getX() - points[pointsSize].getX(), SECOND_POWER)
+                + pow(points[INDEX_ZERO].getY() - points[pointsSize].getY(), SECOND_POWER)
+                + pow(points[INDEX_ZERO].getZ() - points[pointsSize].getZ(), SECOND_POWER));
         String result = String.format("%.2f", len).replace(',', '.');
         System.out.println("The figure perimeter " + result);
     }
